@@ -41,11 +41,28 @@ exports.tambahMahasiswa = function(req, res){
 
     connection.query('INSERT INTO mahasiswa (npm,nama,jurusan) VALUES(?,?,?)',
     [npm,nama,jurusan],
-    function(error,rows,files){
+    function(error,rows,fileds){
         if(error){
             console.log(error);
         }else{
             response.ok('berhasil menambahkan data mahasiswa',res)
+        }
+    });
+};
+
+//mengubah data berdasarkan id mahasiswa
+exports.ubahMahasiswa = function(req,res){
+    var id = req.body.id;
+    var npm = req.body.npm;
+    var nama = req.body.nama;
+    var jurusan = req.body.jurusan;
+
+    connection.query('UPDATE mahasiswa SET npm=?,nama=?,jurusan=? WHERE id=?',[npm,nama,jurusan,id],
+    function(error,rows,fileds){
+        if(error){
+            console.log(error);
+        }else{
+            response.ok('Berhasil Merubah data mahasiswa',res)
         }
     });
 };
