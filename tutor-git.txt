@@ -1,0 +1,18 @@
+npm init
+
+
+description : aplikasi rest api
+
+git repository : copy url dari github
+key word : rest api
+author : hariwib
+
+yes
+
+git init
+git add .
+git commit -m "first Commit"
+git remote add original (url githup)
+
+git remote -v
+git push -f origin master
