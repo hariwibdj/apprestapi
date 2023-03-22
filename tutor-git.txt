@@ -16,3 +16,6 @@ git remote add original (url githup)
 
 git remote -v
 git push -f origin master
+
+https://www.youtube.com/watch?v=WrI48embuHI&list=PLH1gH0TmFBBgWLZCh6iMPYPqP0UHpXzQ5&index=7
+https://www.youtube.com/@ipungdevacademy
