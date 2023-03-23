@@ -1,7 +1,5 @@
-// const { request } = require("express");
-
-var connection = request('../koneksi');
-var mysql = request('mysql');
+var connection = require('../koneksi');
+var mysql = require('mysql');
 var md5 = require('MD5');
 var response = require('../res');
 var jwt = require('jsonwebtoken');
@@ -11,14 +9,14 @@ var ip = require('ip');
 //controller untuk register
 exports.registrasi = function(req,res){
     var post = {
-        username:req.body.username,
-        email:req.body.email,
-        password:reg.body.password,
-        role:reg.body.role,
-        tanggaldaftar:new Date()
+        username : req.body.username,
+        email : req.body.email,
+        password : md5(reg.body.password),
+        role : reg.body.role,
+        tanggaldaftar : new Date()
     }
 
-    var query = "SELECT email FROM ?? WHER ??";
+    var query = "SELECT email FROM ?? WHERE ??";
     var table = ["user","email",post.email];
 
     query = mysql.format(query,table);
@@ -27,15 +25,15 @@ exports.registrasi = function(req,res){
         if(error){
             console.log(error);
         }else{
-            if(rows.length ==0){
+            if(rows.length == 0){
                 var query = "INSERT INTO ?? SET ?";
                 var table = ["user"];
-                query = mysql.formar(query,table);
+                query = mysql.format(query,table);
                 connection.query(query,post,function(error,rows){
                     if(error){
                         console.log(error);
                     }else{
-                        response.ok("Berhasil menambahkan data user");
+                        response.ok("Berhasil menambahkan data user baru",res);
                     }
                 });
             }else{
